@@ -5,7 +5,7 @@ import styles from './CurrentWeather.module.scss';
 const CurrentWeather = () => {
   return (
     <div className={styles.currentWeather}>
-      <p className={styles.place}>Пушкино</p>
+      <h2 className={styles.place}>Пушкино</h2>
       <p className={styles.date}>20.01.2023 пт</p>
       <p className={styles.time}>Время: 20:25</p>
       <img className={styles.icon} src={snow} />

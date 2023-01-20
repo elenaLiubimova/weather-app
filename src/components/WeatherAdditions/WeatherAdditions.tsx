@@ -8,13 +8,13 @@ import sunrise from '../../img/sunrise.svg';
 const WeatherAdditions = () => {
   return (
     <div className={styles.weatherAdditions}>
-      <p className={styles.wind}>
+      <p>
         <img src={wind} alt="иконка ветра" /> ветер: 4,1 м/с, ЮВ
       </p>
-      <p className={styles.pressure}>
+      <p>
         <img src={pressure} alt="иконка атмосферного давления" /> давление: 765 мм рт. ст.
       </p>
-      <p className={styles.humidity}>
+      <p>
         <img src={humidity} alt="иконка влажности" /> влажность: 81 %
       </p>
       {/* <p className={styles.sunrise}>

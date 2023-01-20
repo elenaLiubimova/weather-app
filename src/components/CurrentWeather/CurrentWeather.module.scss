@@ -4,10 +4,10 @@
   "place icon temperature"
   "date icon temperature"
   "time icon temperature"
-  "cloudiness feelings feelings"
-  "sunrise . sunset";
+  "cloudiness feelings feelings";
+  flex-grow: 1;
   column-gap: 30px;
-  padding: 20px 0 20px 20px;
+  padding: 20px;
   border-radius: 10px;
   box-shadow: 2px 5px 25px -3px #B4B4B440;
 
@@ -18,10 +18,11 @@
 
 .place {
   grid-area: place;
+  margin: 0;
 
   color: rgb(71, 156, 121);
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 28px;
+  font-weight: 600;
 }
 
 .date {

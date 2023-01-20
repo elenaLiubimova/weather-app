@@ -1,15 +1,21 @@
 .weatherAdditions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 2px 5px 25px -3px #b4b4b440;
+  flex-grow: 1;
 
   p {
     display: flex;
-    column-gap: 15px;
+    column-gap: 25px;
+    align-items: center;
+    margin: 0;
 
     img {
-      width: 20px;
-      height: 20px;
+      width: 30px;
+      height: 30px;
     }
   }
 }
