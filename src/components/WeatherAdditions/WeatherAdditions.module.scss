@@ -1,0 +1,15 @@
+.weatherAdditions {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 5px 25px -3px #b4b4b440;
+
+  p {
+    display: flex;
+    column-gap: 15px;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
