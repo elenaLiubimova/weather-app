@@ -1,0 +1,55 @@
+.currentWeather {
+  display: grid;
+  grid-template-areas: 
+  "place icon temperature"
+  "date icon temperature"
+  "time icon temperature"
+  "cloudiness feelings feelings";
+  column-gap: 30px;
+  padding: 20px 0 20px 20px;
+  border-radius: 10px;
+  box-shadow: 2px 5px 25px -3px #B4B4B440;
+
+  p {
+    margin: 0;
+  }
+}
+
+.place {
+  grid-area: place;
+
+  color: rgb(71, 156, 121);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.date {
+  grid-area: date;
+}
+
+.time {
+  grid-area: time;
+}
+
+.icon {
+  grid-area: icon;
+  height: 100px;
+}
+
+.temperature {
+  grid-area: temperature;
+  height: 100%;
+
+  font-size: 70px;
+  color: rgb(71, 156, 121);
+}
+
+.cloudiness {
+  grid-area: cloudiness;
+}
+
+.feelings {
+  grid-area: feelings;
+
+  color: rgba(0, 0, 0, .6);
+}
