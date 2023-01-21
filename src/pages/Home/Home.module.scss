@@ -1,6 +1,9 @@
 .main {
-  display: flex;
-  padding: 40px 30px;
+  display: grid;
+  grid-template-areas: 
+  "current-weather weather-additions day-duration"
+  "forecast forecast forecast";
+  padding: 20px 30px;
   justify-content: space-between;
   gap: 30px;
 }

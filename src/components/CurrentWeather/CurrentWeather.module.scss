@@ -5,7 +5,7 @@
   "date icon temperature"
   "time icon temperature"
   "cloudiness feelings feelings";
-  flex-grow: 1;
+  grid-area: current-weather;
   column-gap: 30px;
   padding: 20px;
   border-radius: 10px;

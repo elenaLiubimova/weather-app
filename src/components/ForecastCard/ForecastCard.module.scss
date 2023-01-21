@@ -1,0 +1,17 @@
+.forecastCard {
+  h4 {
+    margin: 0 0 7px;
+  }
+
+  p {
+    margin: 0 0 7px;
+
+    &:last-of-type {
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+}
+
+.feelings {
+  color: rgba(0, 0, 0, 0.6);
+}

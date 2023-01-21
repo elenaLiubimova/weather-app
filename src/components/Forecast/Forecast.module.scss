@@ -1,0 +1,27 @@
+.forecast {
+  grid-area: forecast;
+  border-radius: 10px;
+  box-shadow: 2px 5px 25px -3px #B4B4B440;
+  padding: 10px 20px;
+
+  h3 {
+    margin-right: 30px;
+
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, .6);
+
+    &:first-of-type {
+      color: rgb(71, 156, 121);
+      font-weight: 600;
+    }
+  }
+
+  .tabs {
+    display: flex;
+  }
+
+  .cards {
+    display: flex;
+  }
+}
