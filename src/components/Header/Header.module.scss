@@ -42,19 +42,17 @@ input {
   // }
 }
 
-.toggles {
-  img {
-    position: absolute;
-    z-index: 20;
+.themeToggleBlock {
+  display: flex;
+  align-items: center;
   
-    width: 28px;
-    height: 28px;
+  img {
+    width: 40px;
+    height: 40px;
   }
 }
 
 .themeToggle {
-  position: relative;
-  
   outline: 1px solid rgb(120, 199, 183);
   border: none;
   border-radius: 18px;
@@ -83,6 +81,7 @@ input {
   //   height: 28px;
   // }
 }
+
 
 
 // .searchBlock {

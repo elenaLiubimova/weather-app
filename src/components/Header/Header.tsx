@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Header.module.scss';
 import logo from '../../img/logo.png';
 import sun from '../../img/sun.svg';
-// import moon from '../../img/moon.svg';
+import moon from '../../img/moon.svg';
 // import search from "../../img/search.svg";
 
 const Header = () => {
@@ -18,10 +18,7 @@ const Header = () => {
       '--background-color',
       `var(--background-color-theme-${theme})`
     );
-    root.style.setProperty(
-      '--font-color',
-      `var(--font-color-theme-${theme})`
-    );
+    root.style.setProperty('--font-color', `var(--font-color-theme-${theme})`);
   }, [theme]);
 
   return (
@@ -37,10 +34,13 @@ const Header = () => {
         <input placeholder="Населенный пункт" />
       </div>
       <div className={styles.toggles}>
-        <img src={sun} />
-        <button className={styles.themeToggle} onClick={toggleTheme}>
-          <div />
-        </button>
+        <div className={styles.themeToggleBlock}>
+          <img src={sun} />
+          <button className={styles.themeToggle} onClick={toggleTheme}>
+            <div />
+          </button>
+          <img src={moon} />
+        </div>
       </div>
     </header>
   );
