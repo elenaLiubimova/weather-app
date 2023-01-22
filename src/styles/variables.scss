@@ -1,0 +1,10 @@
+:root {
+  --background-color-theme-light: #fff;
+  --font-color-theme-light: #000;
+
+  --background-color-theme-dark: #000;
+  --font-color-theme-dark: #fff;
+
+  --background-color: var(--background-color-theme-light);
+  --font-color: var(--font-color-theme-light);
+}
