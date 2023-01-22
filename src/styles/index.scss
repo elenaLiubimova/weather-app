@@ -1,10 +1,11 @@
 @import '../vendor/normalize.css';
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap');
+@import './variables.scss';
 
 body {
-  background-color:  var(--background-color-theme-light);
+  background-color: var(--background-color);
 
-  color: var(--font-color-theme-light);
+  color: var(--font-color);
   font-family: "Noto Sans", sans-serif;
 }
 
