@@ -1,10 +1,22 @@
 :root {
   --background-color-theme-light: #fff;
   --font-color-theme-light: #000;
+  --components-text-theme-light: rgba(0, 0, 0, 0.6);
+  --input-and-toggle-theme-light: #fff;
+  --input-text-theme-light: rgba(0, 0, 0, 0.6);
+  --pressure-icon-fill-theme-light: #000;
 
   --background-color-theme-dark: rgb(22, 22, 22);
   --font-color-theme-dark: #fff;
+  --components-text-theme-dark: #818691;
+  --input-and-toggle-theme-dark: #818691;
+  --input-text-theme-dark: #fff;
+  --pressure-icon-fill-theme-dark: #fff;
 
   --background-color: var(--background-color-theme-light);
   --font-color: var(--font-color-theme-light);
+  --components-text: var(--components-text-theme-light);
+  --input-and-toggle: var(--input-and-toggle-theme-light);
+  --input-text: var(--input-text-theme-light);
+  --pressure-icon-fill: var(--pressure-icon-fill-theme-light);
 }

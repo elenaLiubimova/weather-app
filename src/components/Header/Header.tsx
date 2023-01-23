@@ -18,7 +18,16 @@ const Header = () => {
       '--background-color',
       `var(--background-color-theme-${theme})`
     );
+
     root.style.setProperty('--font-color', `var(--font-color-theme-${theme})`);
+
+    root.style.setProperty('--components-text', `var(--components-text-theme-${theme})`);
+
+    root.style.setProperty('--input-and-toggle', `var(--input-and-toggle-theme-${theme})`);
+
+    root.style.setProperty('--input-text', `var(--input-text-theme-${theme})`);
+
+    root.style.setProperty('--pressure-icon-fill', `var(--pressure-icon-fill-theme-${theme})`);
   }, [theme]);
 
   return (
@@ -36,7 +45,7 @@ const Header = () => {
       <div className={styles.toggles}>
         <div className={styles.themeToggleBlock}>
           <img src={sun} />
-          <button className={styles.themeToggle} onClick={toggleTheme}>
+          <button className={styles.themeToggle + ' ' + styles[`themeToggle_theme_${theme}`]} onClick={toggleTheme}>
             <div />
           </button>
           <img src={moon} />
