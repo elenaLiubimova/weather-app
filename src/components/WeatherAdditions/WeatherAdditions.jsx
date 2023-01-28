@@ -1,14 +1,17 @@
 import React from 'react';
 import styles from './WeatherAdditions.module.scss';
 import wind from '../../img/wind.svg';
-import pressure from '../../img/pressure.svg';
 import humidity from '../../img/humidity.svg';
+import { AppContext } from '../../contexts/AppContext';
 
 const WeatherAdditions = () => {
-  return (
+  const { data } = React.useContext(AppContext);
+  const { loading } = React.useContext(AppContext);
+
+  return !loading ? (
     <div className={styles.weatherAdditions}>
       <p>
-        <img src={wind} alt="иконка ветра" /> ветер: 4,1 м/с, ЮВ
+        <img src={wind} alt="иконка ветра" /> ветер: {Math.round(data.wind.speed)} м/с, {data.wind.deg}
       </p>
       <p>
         <svg
@@ -64,12 +67,14 @@ const WeatherAdditions = () => {
             </g>
           </g>
         </svg>
-        давление: 765 мм рт. ст.
+        давление: {Math.round(data.main.pressure)} мм рт. ст.
       </p>
       <p>
-        <img src={humidity} alt="иконка влажности" /> влажность: 81 %
+        <img src={humidity} alt="иконка влажности" /> влажность: {Math.round(data.main.humidity)} %
       </p>
     </div>
+  ) : (
+    <div></div>
   );
 };
 
