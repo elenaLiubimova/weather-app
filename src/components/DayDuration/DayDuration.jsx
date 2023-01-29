@@ -7,15 +7,11 @@ import { AppContext } from '../../contexts/AppContext';
 const DayDuration = () => {
   const { data } = React.useContext(AppContext);
   const { loading } = React.useContext(AppContext);
-  if (!loading) {
-  //   const date = new Date(1674887939);
-  //   console.log(date);
-  // }
 
   return !loading ? (
     <div className={styles.dayDuration}>
       <p>
-        <img src={sunrise} alt="иконка восхода" /> восход: {data.sys.sunrise}
+        <img src={sunrise} alt="иконка восхода" /> восход: 08.21
       </p>
       <p>
         <img src={sunset} alt="иконка заката" /> закат: 16.35
