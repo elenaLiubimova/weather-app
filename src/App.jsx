@@ -6,10 +6,23 @@ function App() {
   const [data, setData] = React.useState();
   const [dailyForecast, setDailyForecast] = React.useState();
   const [loading, setLoading] = React.useState(true);
+  // const [lattitude, setLattitude] = React.useState('56.0104274');
+  // const [longitude, setLongitude] = React.useState('37.8461892');
+  let lattitude = '56.0104274';
+  let longitude = '37.8461892';
 
+  const [geo, setGeo] = React.useState();
+  const [place, setPlace] = React.useState('');
+
+  function handlePlaceInput(evt) {
+    if (evt.key === 'Enter') {
+      setPlace(evt.target.value);
+    }
+  }
+  
   function fetchCurrentData() {
     return fetch(
-      'https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru'
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lattitude}&lon=${longitude}&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru`
     ).then((res) => {
       return res.json();
     });
@@ -17,18 +30,28 @@ function App() {
 
   function fetchDailyForecast() {
     return fetch(
-      'https://api.openweathermap.org/data/2.5/forecast?lat=44.34&lon=10.99&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru'
+      'https://api.openweathermap.org/data/2.5/forecast?lat=56.0104274&lon=37.8461892&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru'
+    ).then((res) => {
+      return res.json();
+    });
+  }
+
+  function fetchGeo() {
+    return fetch(
+      'http://api.openweathermap.org/geo/1.0/direct?q=пушкино&limit=5&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru'
     ).then((res) => {
       return res.json();
     });
   }
 
   React.useEffect(() => {
-    Promise.all([fetchCurrentData(), fetchDailyForecast()])
-      .then(([data, dailyForecast]) => {
+    Promise.all([fetchCurrentData(), fetchDailyForecast(), fetchGeo()])
+      .then(([data, dailyForecast, geo]) => {
         setData(data);
         setDailyForecast(dailyForecast);
-        console.log(data)
+        setGeo(geo);
+        console.log(data);
+        console.log(geo);
       })
 
       .catch((error) => {
@@ -38,12 +61,22 @@ function App() {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [lattitude, longitude]);
 
   // !loading && changeDefaultIcons(dailyForecast.list[0].weather[0].icon);
+  function getCoordinates() {
+    // setLattitude(geo[0].lat);
+    // setLongitude(geo[0].lon);
+    lattitude = geo[0].lat;
+    longitude = geo[0].lon;
+    console.log(lattitude);
+    console.log(longitude);
+  }
+
+  !loading && getCoordinates();
 
   return (
-    <AppContext.Provider value={{ data, loading, dailyForecast }}>
+    <AppContext.Provider value={{ data, loading, dailyForecast, handlePlaceInput, place }}>
       <div className="App">
         <Home />
       </div>

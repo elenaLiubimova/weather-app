@@ -25,23 +25,47 @@ export function changeDefaultIcons(icon) {
     case '02n':
       return (weatherIcon = nt_mostlysunny);
 
-    case '03d' || '04d' || '03n' || '04n':
+    case '03d' || '04d' || '04n':
       return (weatherIcon = cloudy);
 
-    case '09d' || '09n':
+    case '03n':
+      return (weatherIcon = cloudy);
+
+    case '04d':
+      return (weatherIcon = cloudy);
+
+    case '04n':
+      return (weatherIcon = cloudy);
+
+    case '09d':
       return (weatherIcon = rain);
 
-    case '10d' || '10n':
+    case '09n':
+      return (weatherIcon = rain);
+
+    case '10d':
       return (weatherIcon = chancerain);
 
-    case '11d' || '11n':
+    case '10n':
+      return (weatherIcon = chancerain);
+
+    case '11d':
       return (weatherIcon = chancetstorms);
 
-    case '13d' || '13n':
+    case '11n':
+      return (weatherIcon = chancetstorms);
+
+    case '13d':
       return (weatherIcon = snow);
 
-    case '50d' || '50n':
-      return (weatherIcon = mostlysunny);
+    case '13n':
+      return (weatherIcon = snow);
+
+    case '50d':
+      return (weatherIcon = fog);
+
+    case '50n':
+      return (weatherIcon = fog);
 
     default:
       return (weatherIcon = fog);
