@@ -7,9 +7,7 @@ import { changeDefaultIcons } from '../../utils/changeDefaultIcons';
 const CurrentWeather = () => {
   //разобраться с типизацией
 
-const { weatherIcon } = React.useContext(AppContext);
-const { data } = React.useContext(AppContext);
-const { loading } = React.useContext(AppContext);
+const { data, loading, place } = React.useContext(AppContext);
 const date = new Date();
 const hours = date.getHours();
 const minutes = date.getMinutes();
@@ -21,7 +19,7 @@ const weekDay = date.getDay();
   return !loading ? (
     data && (
       <div className={styles.currentWeather}>
-        <h2 className={styles.place}>{data.name}</h2>
+        <h2 className={styles.place}>{place}</h2>
         <p className={styles.date}>{day} {month} {year} {weekDay}</p>
         <p className={styles.time}>Время: {hours}:{minutes}</p>
         <img

@@ -9,7 +9,7 @@ import { AppContext } from '../../contexts/AppContext';
 const Header = () => {
   const [theme, setTheme] = React.useState('light');
   // const [place, setPlace] = React.useState('pushkino');
-  const { handlePlaceInput, place } = React.useContext(AppContext);
+  const { handlePlaceInput, inputValue, handleInputValue } = React.useContext(AppContext);
 
   function toggleTheme() {
     setTheme(theme === 'light' ? 'dark' : 'light');
@@ -59,8 +59,8 @@ const Header = () => {
         <p className={styles.title}>Погода</p>
         {/* <button className={styles.searchButton}/> */}
         <input
-          onChange={(evt) => evt.target.value}
-          value={place}
+          onChange={handleInputValue}
+          value={inputValue}
           placeholder="Населенный пункт"
           onKeyDown={handlePlaceInput}
         />
