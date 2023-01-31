@@ -25,7 +25,7 @@ export function changeDefaultIcons(icon) {
     case '02n':
       return (weatherIcon = nt_mostlysunny);
 
-    case '03d' || '04d' || '04n':
+    case '03d':
       return (weatherIcon = cloudy);
 
     case '03n':
@@ -68,6 +68,6 @@ export function changeDefaultIcons(icon) {
       return (weatherIcon = fog);
 
     default:
-      return (weatherIcon = fog);
+      return (weatherIcon = cloudy);
   }
 }

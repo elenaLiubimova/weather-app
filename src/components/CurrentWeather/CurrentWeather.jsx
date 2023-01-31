@@ -3,25 +3,22 @@ import { AppContext } from '../../contexts/AppContext';
 // import { WeatherData } from '../../utils/types';
 import styles from './CurrentWeather.module.scss';
 import { changeDefaultIcons } from '../../utils/changeDefaultIcons';
+import { day, year, hours } from '../../utils/constants';
+import tramsformMonthToString from '../../utils/tramsformMonthToString';
+import transformWeekDayToString from '../../utils/transformWeekDayToString';
+import transformMinutes from '../../utils/transformMinutes';
 
 const CurrentWeather = () => {
   //разобраться с типизацией
 
 const { data, loading, place } = React.useContext(AppContext);
-const date = new Date();
-const hours = date.getHours();
-const minutes = date.getMinutes();
-const year = date.getFullYear();
-const month = date.getMonth();
-const day = date.getDate();
-const weekDay = date.getDay();
 
   return !loading ? (
     data && (
       <div className={styles.currentWeather}>
         <h2 className={styles.place}>{place}</h2>
-        <p className={styles.date}>{day} {month} {year} {weekDay}</p>
-        <p className={styles.time}>Время: {hours}:{minutes}</p>
+        <p className={styles.date}>{day} {tramsformMonthToString()} {year} {transformWeekDayToString()}</p>
+        <p className={styles.time}>Время: {hours}:{transformMinutes()}</p>
         <img
           className={styles.icon}
           src={changeDefaultIcons(data.weather[0].icon)}

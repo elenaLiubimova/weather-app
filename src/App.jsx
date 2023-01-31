@@ -6,11 +6,11 @@ function App() {
   const [data, setData] = React.useState();
   const [dailyForecast, setDailyForecast] = React.useState();
   const [loading, setLoading] = React.useState(true);
-  const [lattitude, setLattitude] = React.useState('56.0104274');
-  const [longitude, setLongitude] = React.useState('37.8461892');
+  const [lattitude, setLattitude] = React.useState('37.6183');
+  const [longitude, setLongitude] = React.useState('55.745');
 
   const [geo, setGeo] = React.useState();
-  const [place, setPlace] = React.useState('Пушкино');
+  const [place, setPlace] = React.useState('Замоскворечье');
   const [inputValue, setInputValue] = React.useState('');
 
   function handlePlaceInput(evt) {
@@ -55,8 +55,8 @@ function App() {
         setGeo(geo);
         setLattitude(geo[0].lat);
         setLongitude(geo[0].lon);
-        // console.log(data);
-        // console.log(geo);
+        console.log(data);
+        console.log(dailyForecast);
         // console.log(lattitude);
         // console.log(longitude);
       })

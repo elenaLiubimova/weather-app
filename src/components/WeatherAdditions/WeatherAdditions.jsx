@@ -3,6 +3,7 @@ import styles from './WeatherAdditions.module.scss';
 import wind from '../../img/wind.svg';
 import humidity from '../../img/humidity.svg';
 import { AppContext } from '../../contexts/AppContext';
+import transformWindToDirection from '../../utils/transformWindToDirection';
 
 const WeatherAdditions = () => {
   const { data } = React.useContext(AppContext);
@@ -11,7 +12,7 @@ const WeatherAdditions = () => {
   return !loading ? (
     <div className={styles.weatherAdditions}>
       <p>
-        <img src={wind} alt="иконка ветра" /> ветер: {Math.round(data.wind.speed)} м/с, {data.wind.deg}
+        <img src={wind} alt="иконка ветра" /> ветер: {Math.round(data.wind.speed)} м/с, {transformWindToDirection(data.wind.deg)}
       </p>
       <p>
         <svg
