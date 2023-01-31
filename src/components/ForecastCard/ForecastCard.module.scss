@@ -1,4 +1,8 @@
 .forecastCard {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  
   h4 {
     margin: 0 0 7px;
   }
@@ -9,6 +13,11 @@
     &:last-of-type {
       color: var(--components-text);
     }
+  }
+
+  img {
+    width: 100px;
+    height: 100px;
   }
 }
 
