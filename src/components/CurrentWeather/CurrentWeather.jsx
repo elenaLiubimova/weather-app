@@ -18,7 +18,7 @@ const { data, loading, place } = React.useContext(AppContext);
       <div className={styles.currentWeather}>
         <h2 className={styles.place}>{place}</h2>
         <p className={styles.date}>{day} {tramsformMonthToString()} {year} {transformWeekDayToString()}</p>
-        <p className={styles.time}>Время: {hours}:{transformMinutes()}</p>
+        <p className={styles.time}>Время:&nbsp;{hours}:{transformMinutes()}</p>
         <img
           className={styles.icon}
           src={changeDefaultIcons(data.weather[0].icon)}

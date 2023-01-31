@@ -12,7 +12,7 @@ const WeatherAdditions = () => {
   return !loading ? (
     <div className={styles.weatherAdditions}>
       <p>
-        <img src={wind} alt="иконка ветра" /> ветер: {Math.round(data.wind.speed)} м/с, {transformWindToDirection(data.wind.deg)}
+        <img src={wind} alt="иконка ветра" /> ветер: {Math.round(data.wind.speed)}&nbsp;м/с {transformWindToDirection(data.wind.deg)}
       </p>
       <p>
         <svg
@@ -68,10 +68,10 @@ const WeatherAdditions = () => {
             </g>
           </g>
         </svg>
-        давление: {Math.round(data.main.pressure)} мм рт. ст.
+        давление: {Math.round(data.main.pressure)} мм&nbsp;рт.&nbsp;ст.
       </p>
       <p>
-        <img src={humidity} alt="иконка влажности" /> влажность: {Math.round(data.main.humidity)} %
+        <img src={humidity} alt="иконка влажности" /> влажность: {Math.round(data.main.humidity)}&nbsp;%
       </p>
     </div>
   ) : (
