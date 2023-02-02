@@ -6,17 +6,37 @@ function App() {
   const [data, setData] = React.useState();
   const [dailyForecast, setDailyForecast] = React.useState();
   const [loading, setLoading] = React.useState(true);
-  const [lattitude, setLattitude] = React.useState('37.6183');
-  const [longitude, setLongitude] = React.useState('55.745');
+  const [lattitude, setLattitude] = React.useState('37.6183'); //
+  const [longitude, setLongitude] = React.useState('55.745'); //
 
   const [geo, setGeo] = React.useState();
-  const [place, setPlace] = React.useState('Замоскворечье');
+  const [place, setPlace] = React.useState('Москва'); //
   const [inputValue, setInputValue] = React.useState('');
+  
+    // function setInitialLocation() {
+    //   if (!navigator.geolocation) {
+    //     alert('Ваш браузер не дружит с геолокацией...')
+    //   } else {
+    //     navigator.geolocation.getCurrentPosition(success, error)
+    //   }
+    
+    //   function success(position) {
+    //     const { longitude, latitude }  = position.coords;
+    //     setLongitude(longitude);
+    //     setLattitude(latitude);
+    //   }
+    
+    //   function error() {
+    //     console.log('Не получается определить вашу геолокацию :(');
+    //   }
+    // }
 
+    // setInitialLocation();
+  
   function checkResponse(res) {
     return res.ok ? res.json() : Promise.reject(res.status);
   }
-  
+
   function handlePlaceInput(evt) {
     if (evt.key === 'Enter') {
       setPlace(evt.target.value);
@@ -26,10 +46,10 @@ function App() {
   function handleInputValue(evt) {
     setInputValue(evt.target.value);
   }
-  
+
   function fetchCurrentData() {
     return fetch(
-      `https://api.openweathermap.org/data/-2.5/weather?lat=${lattitude}&lon=${longitude}&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lattitude}&lon=${longitude}&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru`
     ).then((res) => checkResponse(res));
   }
 
@@ -53,7 +73,7 @@ function App() {
         setGeo(geo);
         setLattitude(geo[0].lat);
         setLongitude(geo[0].lon);
-        // console.log(data);
+        console.log(data);
         // console.log(dailyForecast);
         // console.log(lattitude);
         // console.log(longitude);
@@ -81,7 +101,17 @@ function App() {
   // !loading && getCoordinates();
 
   return (
-    <AppContext.Provider value={{ data, loading, dailyForecast, handlePlaceInput, place, inputValue, handleInputValue }}>
+    <AppContext.Provider
+      value={{
+        data,
+        loading,
+        dailyForecast,
+        handlePlaceInput,
+        place,
+        inputValue,
+        handleInputValue,
+      }}
+    >
       <div className="App">
         <Home />
       </div>

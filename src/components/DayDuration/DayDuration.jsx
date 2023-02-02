@@ -35,7 +35,7 @@ const DayDuration = () => {
         {sunsetTime}
       </p>
       <h3>Световой день</h3>
-      <p>{sunsetHour - sunriseHour}&nbsp;ч {sunsetMinutes - sunriseMinutes}&nbsp;мин</p>
+      <p>{sunsetHour - sunriseHour}&nbsp;ч {(sunsetMinutes > sunriseMinutes) ? sunsetMinutes - sunriseMinutes : sunriseMinutes - sunsetMinutes}&nbsp;мин</p>
     </div>
   ) : (
     <div></div>
