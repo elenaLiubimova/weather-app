@@ -13,6 +13,10 @@ function App() {
   const [place, setPlace] = React.useState('Замоскворечье');
   const [inputValue, setInputValue] = React.useState('');
 
+  function checkResponse(res) {
+    return res.ok ? res.json() : Promise.reject(res.status);
+  }
+  
   function handlePlaceInput(evt) {
     if (evt.key === 'Enter') {
       setPlace(evt.target.value);
@@ -25,26 +29,20 @@ function App() {
   
   function fetchCurrentData() {
     return fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lattitude}&lon=${longitude}&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru`
-    ).then((res) => {
-      return res.json();
-    });
+      `https://api.openweathermap.org/data/-2.5/weather?lat=${lattitude}&lon=${longitude}&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru`
+    ).then((res) => checkResponse(res));
   }
 
   function fetchDailyForecast() {
     return fetch(
       `https://api.openweathermap.org/data/2.5/forecast?lat=${lattitude}&lon=${longitude}&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru`
-    ).then((res) => {
-      return res.json();
-    });
+    ).then((res) => checkResponse(res));
   }
 
   function fetchGeo() {
     return fetch(
       `http://api.openweathermap.org/geo/1.0/direct?q=${place}&limit=5&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru`
-    ).then((res) => {
-      return res.json();
-    });
+    ).then((res) => checkResponse(res));
   }
 
   React.useEffect(() => {
@@ -62,7 +60,7 @@ function App() {
       })
 
       .catch((error) => {
-        console.log(error);
+        console.log(`error ${error}`);
       })
 
       .finally(() => {
