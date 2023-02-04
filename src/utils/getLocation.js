@@ -18,7 +18,11 @@
 
   // getLocation()
   // .then((position) => {
-  //   console.log(position);
+  //   if (position) {
+  //     return position;
+  //   } else {
+  //     return
+  //   };
   // })
   // .catch((err) => {
   //   console.error(err.message);

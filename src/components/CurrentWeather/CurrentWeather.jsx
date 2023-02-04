@@ -13,12 +13,16 @@ const CurrentWeather = () => {
 
 const { data, loading, place } = React.useContext(AppContext);
 
+const secondsInHour = 3600;
+const timezone = data && data.timezone;
+const timezoneOffset = timezone / secondsInHour;
+
   return !loading ? (
     data && (
       <div className={styles.currentWeather}>
         <h2 className={styles.place}>{place}</h2>
         <p className={styles.date}>{day} {tramsformMonthToString()} {year} {transformWeekDayToString()}</p>
-        <p className={styles.time}>Время:&nbsp;{hours}:{transformMinutes()}</p>
+        <p className={styles.time}>Время:&nbsp;{hours + timezoneOffset}:{transformMinutes()}</p>
         <img
           className={styles.icon}
           src={changeDefaultIcons(data.weather[0].icon)}

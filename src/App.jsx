@@ -73,7 +73,7 @@ function App() {
         setGeo(geo);
         setLattitude(geo[0].lat);
         setLongitude(geo[0].lon);
-        console.log(data);
+        // console.log(data);
         // console.log(dailyForecast);
         // console.log(lattitude);
         // console.log(longitude);

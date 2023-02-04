@@ -3,7 +3,8 @@ import styles from './DayDuration.module.scss';
 import sunrise from '../../img/sunrise.svg';
 import sunset from '../../img/sunset.svg';
 import { AppContext } from '../../contexts/AppContext';
-import moment from 'moment';
+import dayjs from 'dayjs';
+import { localTimeZoneOffsetInSeconds } from '../../utils/constants';
 
 const DayDuration = () => {
   const { data } = React.useContext(AppContext);
@@ -16,12 +17,12 @@ const DayDuration = () => {
   let sunsetMinutes;
 
   if (!loading) {
-    sunriseTime = moment(data.sys.sunrise * 1000).format('HH:mm');
-    sunriseHour = moment(data.sys.sunrise * 1000).format('HH');
-    sunriseMinutes = moment(data.sys.sunrise * 1000).format('mm');
-    sunsetTime = moment(data.sys.sunset * 1000).format('HH:mm');
-    sunsetHour = moment(data.sys.sunset * 1000).format('HH');
-    sunsetMinutes = moment(data.sys.sunset * 1000).format('mm');
+    sunriseTime = dayjs((data.sys.sunrise + localTimeZoneOffsetInSeconds + data.timezone) * 1000).format('HH:mm');
+    sunriseHour = dayjs((data.sys.sunrise + localTimeZoneOffsetInSeconds + data.timezone) * 1000).format('HH');
+    sunriseMinutes = dayjs((data.sys.sunrise + localTimeZoneOffsetInSeconds + data.timezone) * 1000).format('mm');
+    sunsetTime = dayjs((data.sys.sunset + localTimeZoneOffsetInSeconds + data.timezone) * 1000).format('HH:mm');
+    sunsetHour = dayjs((data.sys.sunset + localTimeZoneOffsetInSeconds + data.timezone) * 1000).format('HH');
+    sunsetMinutes = dayjs((data.sys.sunset + localTimeZoneOffsetInSeconds + data.timezone) * 1000).format('mm');
   }
 
   return !loading ? (
