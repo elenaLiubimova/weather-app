@@ -13,26 +13,6 @@ function App() {
   const [place, setPlace] = React.useState('Москва'); //
   const [inputValue, setInputValue] = React.useState('');
   
-    // function setInitialLocation() {
-    //   if (!navigator.geolocation) {
-    //     alert('Ваш браузер не дружит с геолокацией...')
-    //   } else {
-    //     navigator.geolocation.getCurrentPosition(success, error)
-    //   }
-    
-    //   function success(position) {
-    //     const { longitude, latitude }  = position.coords;
-    //     setLongitude(longitude);
-    //     setLattitude(latitude);
-    //   }
-    
-    //   function error() {
-    //     console.log('Не получается определить вашу геолокацию :(');
-    //   }
-    // }
-
-    // setInitialLocation();
-  
   function checkResponse(res) {
     return res.ok ? res.json() : Promise.reject(res.status);
   }
@@ -40,6 +20,7 @@ function App() {
   function handlePlaceInput(evt) {
     if (evt.key === 'Enter') {
       setPlace(evt.target.value);
+      setInputValue('');
     }
   }
 
@@ -109,6 +90,7 @@ function App() {
         handlePlaceInput,
         place,
         inputValue,
+        setInputValue,
         handleInputValue,
       }}
     >
