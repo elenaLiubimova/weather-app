@@ -1,5 +1,6 @@
 import React from 'react';
 import { AppContext } from '../../contexts/AppContext';
+import { Link } from "react-router-dom";
 import ForecastCard from '../ForecastCard/ForecastCard';
 import styles from './Forecast.module.scss';
 
@@ -20,8 +21,12 @@ const Forecast = () => {
   return !loading ? (
     <div className={styles.forecast}>
       <div className={styles.tabs}>
-        <h3>Прогноз на 5 дней</h3>
-        <h3>Прогноз на день</h3>
+        <Link to="/">
+          <h3>Прогноз на 5 дней</h3>
+        </Link>
+        <Link to="/forecasthourly">
+          <h3>Прогноз на день</h3>
+        </Link>
       </div>
       <div className={styles.cards}>{renderForecast()}</div>
     </div>

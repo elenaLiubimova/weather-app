@@ -12,7 +12,7 @@ const WeatherAdditions = () => {
   return !loading ? (
     <div className={styles.weatherAdditions}>
       <p>
-        <img src={wind} alt="иконка ветра" /> ветер: {Math.round(data.wind.speed)}&nbsp;м/с {transformWindToDirection(data.wind.deg)}
+        <img src={wind} alt="иконка ветра" /> ветер: {Math.round(data.wind.speed)}&nbsp;м/с, {transformWindToDirection(data.wind.deg)}
       </p>
       <p>
         <svg
