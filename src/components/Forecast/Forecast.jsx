@@ -3,29 +3,25 @@ import { AppContext } from '../../contexts/AppContext';
 import { Link } from "react-router-dom";
 import ForecastCard from '../ForecastCard/ForecastCard';
 import styles from './Forecast.module.scss';
+import { useWeatherDataArrays } from '../../hooks/useWeatherDataArrays';
 
-const Forecast = () => {
-  const { dailyForecast } = React.useContext(AppContext);
+const Forecast = ({ kind }) => {
   const { loading } = React.useContext(AppContext);
+  const array = useWeatherDataArrays(kind);
 
   const renderForecast = () => {
-    const newArr = [];
 
-    for (let i = 0; i < dailyForecast.list.length; i += 8) {
-      newArr.push(dailyForecast.list[i]);
-    }
-
-    return newArr.map((card, i) => <ForecastCard id={i} key={i} newArr={newArr}/>);
+    return array.map((card, i) => <ForecastCard id={i} key={i} array={array}/>);
   };
 
   return !loading ? (
     <div className={styles.forecast}>
-      <div className={styles.tabs}>
-        <Link to="/">
+      <div className={styles.tabs + ' ' + styles[kind]}>
+        <Link to="/" className={styles.link}>
           <h3>Прогноз на 5 дней</h3>
         </Link>
-        <Link to="/forecasthourly">
-          <h3>Прогноз на день</h3>
+        <Link to="/forecasthourly" className={styles.link}>
+          <h3>Прогноз на 12 часов</h3>
         </Link>
       </div>
       <div className={styles.cards}>{renderForecast()}</div>

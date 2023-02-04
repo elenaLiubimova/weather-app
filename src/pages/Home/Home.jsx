@@ -8,6 +8,7 @@ import ForecastHourly from '../../components/ForecastHourly/ForecastHourly';
 import Header from '../../components/Header/Header';
 import WeatherAdditions from '../../components/WeatherAdditions/WeatherAdditions';
 import styles from './Home.module.scss';
+import { arrayOfDailyWeatherData, arrayOfHourlyWeatherData } from '../../hooks/useWeatherDataArrays';
 
 const Home = () => {
   return (
@@ -18,10 +19,10 @@ const Home = () => {
         <WeatherAdditions />
         <DayDuration />
         <Routes>
-          <Route path="/" element={<Forecast kind="forecastDaily" />} />
+          <Route path="/" element={<Forecast kind="daily" />} />
           <Route
             path="/forecasthourly"
-            element={<Forecast />}
+            element={<Forecast kind="hourly" />}
           />
         </Routes>
       </main>

@@ -8,7 +8,6 @@ import { AppContext } from '../../contexts/AppContext';
 
 const Header = () => {
   const [theme, setTheme] = React.useState('light');
-  // const [place, setPlace] = React.useState('pushkino');
   const { handlePlaceInput, inputValue, handleInputValue } = React.useContext(AppContext);
 
   function toggleTheme() {
