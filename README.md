@@ -17,5 +17,3 @@
 * сделать страницу адаптивной под все устройства;
 * добавить типизацию с использованием Typescript;
 * использовать Redux Toolkit;
-
-* [Gh-pages](https://elenaliubimova.github.io/mesto-react/)
