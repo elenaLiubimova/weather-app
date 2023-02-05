@@ -3,16 +3,22 @@ import { AppContext } from './contexts/AppContext';
 import Home from './pages/Home/Home';
 
 function App() {
-  const [data, setData] = React.useState();
-  const [dailyForecast, setDailyForecast] = React.useState();
+  const [data, setData] = React.useState(null);
+  const [dailyForecast, setDailyForecast] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
-  const [lattitude, setLattitude] = React.useState('37.6183'); //
-  const [longitude, setLongitude] = React.useState('55.745'); //
+  const [latitude, setLatitude] = React.useState('55.745');
+  const [longitude, setLongitude] = React.useState('37.6183');
 
-  const [geo, setGeo] = React.useState();
-  const [place, setPlace] = React.useState('Москва'); //
+  const [geo, setGeo] = React.useState(null);
+  const [place, setPlace] = React.useState('Москва');
   const [inputValue, setInputValue] = React.useState('');
-  
+
+  function getLocation() {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+  }
+    
   function checkResponse(res) {
     return res.ok ? res.json() : Promise.reject(res.status);
   }
@@ -28,35 +34,35 @@ function App() {
     setInputValue(evt.target.value);
   }
 
+  function fetchGeo() {
+    return fetch(
+      `https://api.openweathermap.org/geo/1.0/direct?q=${place}&limit=5&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru`
+    ).then((res) => checkResponse(res));
+  }
+
   function fetchCurrentData() {
     return fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lattitude}&lon=${longitude}&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru`
     ).then((res) => checkResponse(res));
   }
 
   function fetchDailyForecast() {
     return fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${lattitude}&lon=${longitude}&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru`
     ).then((res) => checkResponse(res));
   }
-
-  function fetchGeo() {
-    return fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${place}&limit=5&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru`
-    ).then((res) => checkResponse(res));
-  }
-
+  
   React.useEffect(() => {
-    Promise.all([fetchCurrentData(), fetchDailyForecast(), fetchGeo()])
-      .then(([data, dailyForecast, geo]) => {
+    Promise.all([fetchGeo(), fetchCurrentData(), fetchDailyForecast()])
+      .then(([geo, data, dailyForecast]) => {
+        setGeo(geo);
+        setLatitude(geo[0].lat);
+        setLongitude(geo[0].lon);
         setData(data);
         setDailyForecast(dailyForecast);
-        setGeo(geo);
-        setLattitude(geo[0].lat);
-        setLongitude(geo[0].lon);
         // console.log(data);
         // console.log(dailyForecast);
-        // console.log(lattitude);
+        // console.log(latitude);
         // console.log(longitude);
       })
 
@@ -67,19 +73,7 @@ function App() {
       .finally(() => {
         setLoading(false);
       });
-  }, [place, lattitude, longitude]);
-
-  // !loading && changeDefaultIcons(dailyForecast.list[0].weather[0].icon);
-  function getCoordinates() {
-    // setLattitude(geo[0].lat);
-    // setLongitude(geo[0].lon);
-    // lattitude = geo[0].lat;
-    // longitude = geo[0].lon;
-    console.log(geo[0].lat);
-    console.log(geo[0].lon);
-  }
-
-  // !loading && getCoordinates();
+  }, [place, latitude, longitude]);
 
   return (
     <AppContext.Provider

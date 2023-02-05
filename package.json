@@ -33,10 +33,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/elenaliubimova/weather-app/"
-  },
+  "homepage": "./",
   "eslintConfig": {
     "extends": [
       "react-app",

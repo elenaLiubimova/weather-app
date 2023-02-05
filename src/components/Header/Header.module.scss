@@ -7,7 +7,6 @@ header {
 
 .logoAndTitle {
   display: flex;
-  min-width: 45%;
   align-items: center;
   gap: 12px;
 }
@@ -19,7 +18,6 @@ header {
 
 .title {
   margin: 0;
-  flex-grow: 1;
 
   font-weight: 700;
   text-transform: uppercase;
@@ -57,6 +55,7 @@ header {
   }
 
   input {
+    margin: 0 0 0 20px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     padding: 0 25px 0;
