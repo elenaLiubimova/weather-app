@@ -1,4 +1,7 @@
 .dayDuration {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 2px 5px 25px -3px #b4b4b440;
@@ -6,6 +9,7 @@
 
   h3 {
     color: rgb(71, 156, 121);
+    margin: 0 0 10px 0;
     font-size: 20px;
     font-weight: 500;
   }
@@ -19,6 +23,20 @@
     img {
       width: 35px;
       height: 35px;
+    }
+  }
+}
+
+@media screen and (max-width: 1075px) {
+  .dayDuration {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 20px;
+    
+    h3 {
+      margin: 0;
+      align-self: center;
     }
   }
 }

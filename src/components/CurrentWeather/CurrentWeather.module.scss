@@ -7,6 +7,7 @@
   "cloudiness feelings feelings";
   grid-area: current-weather;
   column-gap: 30px;
+  row-gap: 20px;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 2px 5px 25px -3px #B4B4B440;
@@ -52,6 +53,21 @@
 
 .feelings {
   grid-area: feelings;
+  align-self: center;
 
   color: var(--components-text);
+}
+
+@media screen and (max-width: 566px) {
+  .currentWeather {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+
+    p {
+      column-gap: 10px;
+    }
+  }
 }

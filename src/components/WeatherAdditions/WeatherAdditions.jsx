@@ -68,7 +68,7 @@ const WeatherAdditions = () => {
             </g>
           </g>
         </svg>
-        давление: {Math.round(data.main.pressure)} мм&nbsp;рт.&nbsp;ст.
+        давление: {Math.round(data.main.pressure)}&nbsp;мм&nbsp;рт.&nbsp;ст.
       </p>
       <p>
         <img src={humidity} alt="иконка влажности" /> влажность: {Math.round(data.main.humidity)}&nbsp;%

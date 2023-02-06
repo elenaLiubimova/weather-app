@@ -1,5 +1,7 @@
 header {
   display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
   padding: 20px 30px;
   justify-content: space-between;
   align-items: center;
@@ -7,6 +9,7 @@ header {
 
 .logoAndTitle {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 12px;
 }
@@ -27,6 +30,8 @@ header {
 
 .searchField {
   position: relative;
+  width: 45%;
+  margin: 0 0 0 50px;
   
   img {
     position: absolute;
@@ -55,11 +60,11 @@ header {
   }
 
   input {
-    margin: 0 0 0 20px;
+    margin: 0;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     padding: 0 25px 0;
-    width: 200px;
+    width: 100%;
     height: 28px;
     border-radius: 10px;
     background-color: var(--input-and-toggle);
@@ -120,4 +125,11 @@ header {
 
 .themeToggle_theme_dark {
   justify-content: flex-end;
+}
+
+@media screen and (max-width: 566px) {
+  .searchField {
+    width: 100%;
+    margin: 0;
+  }
 }

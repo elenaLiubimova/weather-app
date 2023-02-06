@@ -27,16 +27,16 @@ const DayDuration = () => {
 
   return !loading ? (
     <div className={styles.dayDuration}>
-      <p>
+      <p className={styles.sunrise}>
         <img src={sunrise} alt="иконка восхода" /> восход:{' '}
         {sunriseTime}
       </p>
-      <p>
+      <p  className={styles.sunset}>
         <img src={sunset} alt="иконка заката" /> закат:{' '}
         {sunsetTime}
       </p>
-      <h3>Световой день</h3>
-      <p>{sunsetHour - sunriseHour}&nbsp;ч {(sunsetMinutes > sunriseMinutes) ? sunsetMinutes - sunriseMinutes : sunriseMinutes - sunsetMinutes}&nbsp;мин</p>
+      <h3 className={styles.title}>Световой день</h3>
+      <p className={styles.time}>{sunsetHour - sunriseHour}&nbsp;ч {(sunsetMinutes > sunriseMinutes) ? sunsetMinutes - sunriseMinutes : sunriseMinutes - sunsetMinutes}&nbsp;мин</p>
     </div>
   ) : (
     <div></div>
