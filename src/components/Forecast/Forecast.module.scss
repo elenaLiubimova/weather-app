@@ -3,6 +3,7 @@
   border-radius: 10px;
   box-shadow: 2px 5px 25px -3px #b4b4b440;
   padding: 10px 20px;
+  }
 
   .tabs {
     display: flex;
@@ -20,7 +21,7 @@
       color: var(--components-text);
 
       &:first-of-type {
-        color: rgb(71, 156, 121) !important;
+        color: rgb(71, 156, 121);
         font-weight: 600;
       }
     }
@@ -44,19 +45,23 @@
     justify-content: space-between;
     gap: 20px;
     max-width: 1280px;
-    overflow-x: scroll;
-    scrollbar-width: thin;
-    scrollbar-base-color: #b4b4b440;
+  }
 
-    &::-webkit-scrollbar {
-      height: 10px;
-      background: #b4b4b440;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      width: 10px;
-      height: 10px;
-      background: rgb(71, 156, 121);
+  @media screen and (max-width: 1075px) {
+    .cards {
+      overflow-x: scroll;
+      scrollbar-width: thin;
+      scrollbar-base-color: #b4b4b440;
+  
+      &::-webkit-scrollbar {
+        height: 10px;
+        background: #b4b4b440;
+      }
+  
+      &::-webkit-scrollbar-thumb {
+        width: 10px;
+        height: 10px;
+        background: rgb(71, 156, 121);
+      }
     }
   }
-}

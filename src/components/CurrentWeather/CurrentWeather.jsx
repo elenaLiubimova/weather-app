@@ -11,23 +11,35 @@ import transformMinutes from '../../utils/transformMinutes';
 const CurrentWeather = () => {
   //разобраться с типизацией
 
-const { data, loading, place } = React.useContext(AppContext);
+  const { data, loading, place } = React.useContext(AppContext);
 
-const secondsInHour = 3600;
-const timezone = data && data.timezone;
-const timezoneOffset = timezone / secondsInHour;
+  const secondsInHour = 3600;
+  const timezone = data && data.timezone;
+  const timezoneOffset = timezone / secondsInHour;
+  let timezoneHour = hours && hours + timezoneOffset;
+
+  function transformHours(hour) {
+    hour = (hour > 23 || hour < 0) ? (hour-24) : hour;
+    return hour;
+  }
 
   return !loading ? (
     data && (
       <div className={styles.currentWeather}>
         <h2 className={styles.place}>{place}</h2>
-        <p className={styles.date}>{day} {tramsformMonthToString()} {year} {transformWeekDayToString()}</p>
-        <p className={styles.time}>Время:&nbsp;{hours + timezoneOffset}:{transformMinutes()}</p>
+        <p className={styles.date}>
+          {day} {tramsformMonthToString()} {year} {transformWeekDayToString()}
+        </p>
+        <p className={styles.time}>
+          Время:&nbsp;{transformHours(timezoneHour)}:{transformMinutes()}
+        </p>
         <img
           className={styles.icon}
           src={changeDefaultIcons(data.weather[0].icon)}
         />
-        <p className={styles.temperature}>{Math.round(data.main.temp)}&nbsp;&deg;C</p>
+        <p className={styles.temperature}>
+          {Math.round(data.main.temp)}&nbsp;&deg;C
+        </p>
         <p className={styles.cloudiness}>{data.weather[0].description}</p>
         <p className={styles.feelings}>
           Ощущается как {Math.round(data.main.feels_like)} &nbsp;&deg;C;
