@@ -9,9 +9,9 @@ function App() {
   const [latitude, setLatitude] = React.useState('55.745'); //55.745
   const [longitude, setLongitude] = React.useState('37.6183'); //37.6183
 
-  const [geo, setGeo] = React.useState(null);
+  // const [geo, setGeo] = React.useState(null);
   const [place, setPlace] = React.useState(''); //Москва
-  const [inputValue, setInputValue] = React.useState('');
+  // const [inputValue, setInputValue] = React.useState('');
 
   function getLocation() {
     return new Promise((resolve, reject) => {
@@ -38,16 +38,16 @@ function App() {
     return res.ok ? res.json() : Promise.reject(res.status);
   }
 
-  function handlePlaceInput(evt) {
-    if (evt.key === 'Enter') {
-      setPlace(evt.target.value);
-      setInputValue('');
-    }
-  }
+  // function handlePlaceInput(evt) {
+  //   if (evt.key === 'Enter') {
+  //     setPlace(evt.target.value);
+  //     setInputValue('');
+  //   }
+  // }
 
-  function handleInputValue(evt) {
-    setInputValue(evt.target.value);
-  }
+  // function handleInputValue(evt) {
+  //   setInputValue(evt.target.value);
+  // }
 
   // function fetchGeo() {
   //   return fetch(
@@ -100,11 +100,13 @@ function App() {
         data,
         loading,
         dailyForecast,
-        handlePlaceInput,
+        // handlePlaceInput,
         place,
-        inputValue,
-        setInputValue,
-        handleInputValue,
+        setPlace,
+        checkResponse
+        // inputValue,
+        // setInputValue,
+        // handleInputValue,
       }}
     >
       <div className="App">

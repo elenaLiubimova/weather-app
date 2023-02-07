@@ -5,16 +5,17 @@ import sun from '../../img/sun.svg';
 import moon from '../../img/moon.svg';
 import { AppContext } from '../../contexts/AppContext';
 import search from '../../img/search.svg';
+import Search from '../Search/Search';
 
 const Header = () => {
   const [theme, setTheme] = React.useState('light');
-  const { handlePlaceInput, inputValue, setInputValue, handleInputValue } = React.useContext(AppContext);
-  const inputRef = React.useRef(null);
+  // const { handlePlaceInput, inputValue, setInputValue, handleInputValue } = React.useContext(AppContext);
+  // const inputRef = React.useRef(null);
 
-  function onClearInput() {
-    setInputValue('');
-    inputRef.current.focus();
-  }
+  // function onClearInput() {
+  //   setInputValue('');
+  //   inputRef.current.focus();
+  // }
 
   function toggleTheme() {
     setTheme(theme === 'light' ? 'dark' : 'light');
@@ -56,7 +57,8 @@ const Header = () => {
           alt="логотип приложения: солнце с облаком"
         />
         <p className={styles.title}>Погода</p>
-        <div className={styles.searchField}>
+        <Search />
+        {/* <div className={styles.searchField}>
           <input
             onChange={handleInputValue}
             ref={inputRef}
@@ -85,7 +87,7 @@ const Header = () => {
               </svg>
             </button>
           )}
-        </div>
+        </div> */}
       </div>
       <div className={styles.toggles}>
         <div className={styles.themeToggleBlock}>
