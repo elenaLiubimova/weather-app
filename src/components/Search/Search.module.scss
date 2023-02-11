@@ -1,6 +1,8 @@
 .searchField {
   position: relative;
-  width: 45%;
+  flex-grow: 1;
+
+  max-width: 250px;
   margin: 0 0 0 50px;
   
   img {
@@ -54,6 +56,22 @@
   
     &::-moz-placeholder {
       color: var(--input-text);
+    }
+  }
+}
+
+@media screen and (max-width: 566px) {
+  .searchField {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+
+    img {
+      top: 9px;
+    }
+
+    input {
+      height: 35px;
     }
   }
 }
