@@ -4,7 +4,8 @@ import search from '../../img/search.svg';
 import styles from './Search.module.scss';
 
 const Search = () => {
-  const { loading, fetchGeo, place, setPlace, setLatitude, setLongitude, fetchCurrentData, setData } =
+  const { loading, fetchGeo, setPlace, setLatitude, setLongitude, fetchCurrentData, setData, fetchDailyForecast,
+    setDailyForecast } =
     React.useContext(AppContext);
   const inputRef = React.useRef(null);
   const [inputValue, setInputValue] = React.useState('');
@@ -20,11 +21,12 @@ const Search = () => {
         return geo;
       })
 
-      .then((geo) => fetchCurrentData(geo[0].lat, geo[0].lon)) //
+      .then((geo) => Promise.all([fetchCurrentData(geo[0].lat, geo[0].lon), fetchDailyForecast(geo[0].lat, geo[0].lon)]))
 
-      .then((data) => {
+      .then(([data, dailyForecast]) => {
         setData(data);
         setPlace(data.name);
+        setDailyForecast(dailyForecast);
       })
     }
   }
@@ -37,15 +39,6 @@ const Search = () => {
     setInputValue('');
     inputRef.current.focus();
   }
-
-  // React.useEffect(() => {
-  //   fetchGeo().then((geo) => {
-  //     setGeo(geo);
-  //     setLatitude(geo[0].lat);
-  //     setLongitude(geo[0].lon);
-  //   });
-  //   console.log(geo);
-  // }, [place]);
 
   return !loading ? (
     <div className={styles.searchField}>

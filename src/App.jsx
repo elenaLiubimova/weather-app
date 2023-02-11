@@ -27,11 +27,11 @@ function App() {
     ).then((res) => checkResponse(res));
   }
 
-  // function fetchDailyForecast(lat, lon) {
-  //   return fetch(
-  //     `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru`
-  //   ).then((res) => checkResponse(res));
-  // }
+  function fetchDailyForecast(lat, lon) {
+    return fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru`
+    ).then((res) => checkResponse(res));
+  }
 
   function fetchGeo(place) {
     return fetch(
@@ -47,11 +47,12 @@ function App() {
         return position.coords;
       })
 
-      .then((res) => fetchCurrentData(res.latitude, res.longitude))
+      .then((res) => Promise.all([fetchCurrentData(res.latitude, res.longitude), fetchDailyForecast(res.latitude, res.longitude)]))
 
-      .then((data) => {
+      .then(([data, dailyForecast]) => {
         setData(data);
         setPlace(data.name);
+        setDailyForecast(dailyForecast);
       })
 
       .catch((error) => {
@@ -75,7 +76,9 @@ function App() {
         setLatitude,
         setLongitude,
         fetchCurrentData,
-        setData
+        setData,
+        fetchDailyForecast,
+        setDailyForecast
       }}
     >
       <div className="App">
