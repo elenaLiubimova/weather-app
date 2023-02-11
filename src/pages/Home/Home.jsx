@@ -18,13 +18,13 @@ const Home = () => {
         <CurrentWeather />
         <WeatherAdditions />
         <DayDuration />
-        <Routes>
+        {/* <Routes>
           <Route path="/" element={<Forecast kind="daily" />} />
           <Route
             path="/forecasthourly"
             element={<Forecast kind="hourly" />}
           />
-        </Routes>
+        </Routes> */}
       </main>
       <Footer />
     </>

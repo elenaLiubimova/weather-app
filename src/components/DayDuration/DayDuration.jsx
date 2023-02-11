@@ -17,12 +17,12 @@ const DayDuration = () => {
   let sunsetMinutes;
 
   if (!loading) {
-    sunriseTime = dayjs((data.sys.sunrise + localTimeZoneOffsetInSeconds + data.timezone) * 1000).format('HH:mm');
-    sunriseHour = dayjs((data.sys.sunrise + localTimeZoneOffsetInSeconds + data.timezone) * 1000).format('HH');
-    sunriseMinutes = dayjs((data.sys.sunrise + localTimeZoneOffsetInSeconds + data.timezone) * 1000).format('mm');
-    sunsetTime = dayjs((data.sys.sunset + localTimeZoneOffsetInSeconds + data.timezone) * 1000).format('HH:mm');
-    sunsetHour = dayjs((data.sys.sunset + localTimeZoneOffsetInSeconds + data.timezone) * 1000).format('HH');
-    sunsetMinutes = dayjs((data.sys.sunset + localTimeZoneOffsetInSeconds + data.timezone) * 1000).format('mm');
+    sunriseTime = data && dayjs((data.sys.sunrise + localTimeZoneOffsetInSeconds + data.timezone) * 1000).format('HH:mm');
+    sunriseHour = data && dayjs((data.sys.sunrise + localTimeZoneOffsetInSeconds + data.timezone) * 1000).format('HH');
+    sunriseMinutes = data && dayjs((data.sys.sunrise + localTimeZoneOffsetInSeconds + data.timezone) * 1000).format('mm');
+    sunsetTime = data && dayjs((data.sys.sunset + localTimeZoneOffsetInSeconds + data.timezone) * 1000).format('HH:mm');
+    sunsetHour = data && dayjs((data.sys.sunset + localTimeZoneOffsetInSeconds + data.timezone) * 1000).format('HH');
+    sunsetMinutes = data && dayjs((data.sys.sunset + localTimeZoneOffsetInSeconds + data.timezone) * 1000).format('mm');
   }
 
   return !loading ? (

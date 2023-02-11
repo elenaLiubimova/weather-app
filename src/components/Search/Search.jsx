@@ -4,21 +4,28 @@ import search from '../../img/search.svg';
 import styles from './Search.module.scss';
 
 const Search = () => {
-  const { place, setPlace, checkResponse } = React.useContext(AppContext);
+  const { loading, fetchGeo, place, setPlace, setLatitude, setLongitude, fetchCurrentData, setData } =
+    React.useContext(AppContext);
   const inputRef = React.useRef(null);
   const [inputValue, setInputValue] = React.useState('');
   const [geo, setGeo] = React.useState(null);
 
-  function fetchGeo() {
-    return fetch(
-      `https://api.openweathermap.org/geo/1.0/direct?q=${place}&limit=5&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru`
-    ).then((res) => checkResponse(res));
-  }
-
   function handlePlaceInput(evt) {
     if (evt.key === 'Enter') {
-      setPlace(evt.target.value);
       setInputValue('');
+      fetchGeo(evt.target.value).then((geo) => {
+        setGeo(geo);
+        setLatitude(geo[0].lat);
+        setLongitude(geo[0].lon);
+        return geo;
+      })
+
+      .then((geo) => fetchCurrentData(geo[0].lat, geo[0].lon)) //
+
+      .then((data) => {
+        setData(data);
+        setPlace(data.name);
+      })
     }
   }
 
@@ -31,15 +38,16 @@ const Search = () => {
     inputRef.current.focus();
   }
 
-  React.useEffect(() => {
-    console.log(place)
-    
-    fetchGeo();
-    setGeo(geo);
-    console.log(geo)
-  }, [place]);
+  // React.useEffect(() => {
+  //   fetchGeo().then((geo) => {
+  //     setGeo(geo);
+  //     setLatitude(geo[0].lat);
+  //     setLongitude(geo[0].lon);
+  //   });
+  //   console.log(geo);
+  // }, [place]);
 
-  return (
+  return !loading ? (
     <div className={styles.searchField}>
       <input
         onChange={handleInputValue}
@@ -68,6 +76,8 @@ const Search = () => {
         </button>
       )}
     </div>
+  ) : (
+    <div></div>
   );
 };
 
