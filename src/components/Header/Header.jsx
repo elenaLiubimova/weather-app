@@ -3,18 +3,10 @@ import styles from './Header.module.scss';
 import logo from '../../img/logo.png';
 import sun from '../../img/sun.svg';
 import moon from '../../img/moon.svg';
-import { AppContext } from '../../contexts/AppContext';
-import search from '../../img/search.svg';
+import Search from '../Search/Search';
 
 const Header = () => {
   const [theme, setTheme] = React.useState('light');
-  const { handlePlaceInput, inputValue, setInputValue, handleInputValue } = React.useContext(AppContext);
-  const inputRef = React.useRef(null);
-
-  function onClearInput() {
-    setInputValue('');
-    inputRef.current.focus();
-  }
 
   function toggleTheme() {
     setTheme(theme === 'light' ? 'dark' : 'light');
@@ -56,36 +48,9 @@ const Header = () => {
           alt="логотип приложения: солнце с облаком"
         />
         <p className={styles.title}>Погода</p>
-        <div className={styles.searchField}>
-          <input
-            onChange={handleInputValue}
-            ref={inputRef}
-            value={inputValue}
-            placeholder="Населенный пункт"
-            onKeyDown={handlePlaceInput}
-          />
-          {!inputValue && <img src={search} alt="иконка поиска" />}
-          {inputValue && (
-            <button
-            onClick={() => onClearInput()}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="16" y1="0" x2="0" y2="16" stroke="#E4E4E4"/>
-                <line x1="0" y1="0" x2="16" y2="16" stroke="#E4E4E4"/>
-              </svg>
-            </button>
-          )}
-        </div>
+      </div>
+      <div className={styles.searchContainer}>
+        <Search />
       </div>
       <div className={styles.toggles}>
         <div className={styles.themeToggleBlock}>
