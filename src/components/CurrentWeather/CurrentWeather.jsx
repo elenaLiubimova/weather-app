@@ -1,5 +1,6 @@
 import React from 'react';
 import { AppContext } from '../../contexts/AppContext';
+import { useSelector } from 'react-redux';
 // import { WeatherData } from '../../utils/types';
 import styles from './CurrentWeather.module.scss';
 import { changeDefaultIcons } from '../../utils/changeDefaultIcons';
@@ -11,7 +12,10 @@ import transformMinutes from '../../utils/transformMinutes';
 const CurrentWeather = () => {
   //разобраться с типизацией
 
-  const { data, loading, place } = React.useContext(AppContext);
+  const { data, loading } = React.useContext(AppContext);
+
+  const place = useSelector((state) => state.place);
+  console.log(place)
 
   const secondsInHour = 3600;
   const timezone = data && data.timezone;
@@ -26,7 +30,7 @@ const CurrentWeather = () => {
   return !loading ? (
     data && (
       <div className={styles.currentWeather}>
-        <h2 className={styles.place}>{place}</h2>
+        <h2 className={styles.place}>{}</h2>
         <p className={styles.date}>
           {day}&nbsp;{tramsformMonthToString()}&nbsp;{year}&nbsp;{transformWeekDayToString()}
         </p>

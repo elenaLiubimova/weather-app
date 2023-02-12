@@ -1,6 +1,8 @@
 import React from 'react';
 import { AppContext } from './contexts/AppContext';
+import { useDispatch } from 'react-redux';
 import Home from './pages/Home/Home';
+import { getGeo, setPlace } from './redux/place/slice';
 
 function App() {
   const [data, setData] = React.useState(null);
@@ -9,7 +11,8 @@ function App() {
   const [latitude, setLatitude] = React.useState(''); //55.745
   const [longitude, setLongitude] = React.useState(''); //37.6183
 
-  const [place, setPlace] = React.useState('');
+  // const [place, setPlace] = React.useState('');
+  const dispatch = useDispatch();
 
   function getLocation() {
     return new Promise((resolve, reject) => {
@@ -34,9 +37,9 @@ function App() {
   }
 
   function fetchGeo(place) {
-    return fetch(
-      `https://api.openweathermap.org/geo/1.0/direct?q=${place}&limit=5&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru`
-    ).then((res) => checkResponse(res));
+    // return fetch(
+    //   `https://api.openweathermap.org/geo/1.0/direct?q=${place}&limit=5&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru`
+    // ).then((res) => checkResponse(res));
   }
 
   React.useEffect(() => {
@@ -51,7 +54,8 @@ function App() {
 
       .then(([data, dailyForecast]) => {
         setData(data);
-        setPlace(data.name);
+        // setPlace(data.name);
+        dispatch(setPlace(data.name));
         setDailyForecast(dailyForecast);
       })
 
@@ -70,9 +74,9 @@ function App() {
         data,
         loading,
         dailyForecast,
-        place,
+        // place,
         fetchGeo,
-        setPlace,
+        // setPlace,
         setLatitude,
         setLongitude,
         fetchCurrentData,

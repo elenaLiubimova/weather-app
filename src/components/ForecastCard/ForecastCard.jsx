@@ -9,7 +9,6 @@ import { localTimeZoneOffsetInHours } from '../../utils/constants';
 
 const ForecastCard = ({ id, array }) => {
   const { data } = React.useContext(AppContext);
-  const { dailyForecast } = React.useContext(AppContext);
   const { loading } = React.useContext(AppContext);
 
   const timezoneOffset = data.timezone / 3600;
