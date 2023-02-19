@@ -7,11 +7,21 @@ import { day, year, hours } from '../../utils/constants';
 import tramsformMonthToString from '../../utils/tramsformMonthToString';
 import transformWeekDayToString from '../../utils/transformWeekDayToString';
 import transformMinutes from '../../utils/transformMinutes';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCurrentData } from '../../redux/data/slice';
 
 const CurrentWeather = () => {
   //разобраться с типизацией
+  const data = useSelector(state => state.data.data);
+  console.log(data)
 
-  const { data, loading, place } = React.useContext(AppContext);
+  // const dispatch = useDispatch();
+
+  // React.useEffect(() => {
+  //   dispatch(getCurrentData());
+  // }, []);
+  
+  const { loading, place } = React.useContext(AppContext);
 
   const secondsInHour = 3600;
   const timezone = data && data.timezone;

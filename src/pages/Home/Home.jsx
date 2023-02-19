@@ -16,7 +16,7 @@ const Home = () => {
       <Header />
       <main className={styles.main}>
         <CurrentWeather />
-        <WeatherAdditions />
+        {/* <WeatherAdditions />
         <DayDuration />
         <Routes>
           <Route path="/" element={<Forecast kind="daily" />} />
@@ -24,7 +24,7 @@ const Home = () => {
             path="/forecasthourly"
             element={<Forecast kind="hourly" />}
           />
-        </Routes>
+        </Routes> */}
       </main>
       <Footer />
     </>

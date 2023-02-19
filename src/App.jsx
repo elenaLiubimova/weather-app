@@ -1,6 +1,8 @@
 import React from 'react';
 import { AppContext } from './contexts/AppContext';
 import Home from './pages/Home/Home';
+import { useDispatch } from 'react-redux';
+import { getCurrentData } from './redux/data/slice';
 
 function App() {
   const [data, setData] = React.useState(null);
@@ -10,6 +12,7 @@ function App() {
   const [longitude, setLongitude] = React.useState(''); //37.6183
 
   const [place, setPlace] = React.useState('');
+  const dispatch = useDispatch();
 
   function getLocation() {
     return new Promise((resolve, reject) => {
@@ -21,11 +24,11 @@ function App() {
     return res.ok ? res.json() : Promise.reject(res.status);
   }
 
-  function fetchCurrentData(lat, lon) { 
-    return fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru`
-    ).then((res) => checkResponse(res));
-  }
+  // function fetchCurrentData(lat, lon) { 
+  //   return fetch(
+  //     `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru`
+  //   ).then((res) => checkResponse(res));
+  // }
 
   function fetchDailyForecast(lat, lon) {
     return fetch(
@@ -40,28 +43,30 @@ function App() {
   }
 
   React.useEffect(() => {
-    getLocation()
-      .then((position) => {
-        setLatitude(position.coords.latitude);
-        setLongitude(position.coords.longitude);
-        return position.coords;
-      })
+    dispatch(getCurrentData());
 
-      .then((res) => Promise.all([fetchCurrentData(res.latitude, res.longitude), fetchDailyForecast(res.latitude, res.longitude)]))
+    // getLocation()
+    //   .then((position) => {
+    //     setLatitude(position.coords.latitude);
+    //     setLongitude(position.coords.longitude);
+    //     return position.coords;
+    //   })
 
-      .then(([data, dailyForecast]) => {
-        setData(data);
-        setPlace(data.name);
-        setDailyForecast(dailyForecast);
-      })
+    //   .then((res) => Promise.all([fetchCurrentData(res.latitude, res.longitude), fetchDailyForecast(res.latitude, res.longitude)]))
 
-      .catch((error) => {
-        console.log(`error ${error}`);
-      })
+    //   .then(([data, dailyForecast]) => {
+    //     setData(data);
+    //     setPlace(data.name);
+    //     setDailyForecast(dailyForecast);
+    //   })
 
-      .finally(() => {
-        setLoading(false);
-      });
+    //   .catch((error) => {
+    //     console.log(`error ${error}`);
+    //   })
+
+    //   .finally(() => {
+    //     setLoading(false);
+    //   });
   }, []);
 
   return (
@@ -75,7 +80,7 @@ function App() {
         setPlace,
         setLatitude,
         setLongitude,
-        fetchCurrentData,
+        // fetchCurrentData,
         setData,
         fetchDailyForecast,
         setDailyForecast
