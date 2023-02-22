@@ -15,11 +15,11 @@ const CurrentWeather = () => {
   const data = useSelector(state => state.data.data);
   console.log(data)
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // React.useEffect(() => {
-  //   dispatch(getCurrentData());
-  // }, []);
+  React.useEffect(() => {
+    dispatch(getCurrentData());
+  }, []);
   
   const { loading, place } = React.useContext(AppContext);
 
@@ -33,7 +33,7 @@ const CurrentWeather = () => {
     return hour;
   }
 
-  return !loading ? (
+  return  (
     data && (
       <div className={styles.currentWeather}>
         <h2 className={styles.place}>{place}</h2>
@@ -56,9 +56,7 @@ const CurrentWeather = () => {
         </p>
       </div>
     )
-  ) : (
-    <div></div>
-  );
+  )
 };
 
 export default CurrentWeather;
