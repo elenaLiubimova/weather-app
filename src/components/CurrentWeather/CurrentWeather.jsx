@@ -1,5 +1,6 @@
 import React from 'react';
 import { AppContext } from '../../contexts/AppContext';
+import { useSelector } from 'react-redux';
 // import { WeatherData } from '../../utils/types';
 import styles from './CurrentWeather.module.scss';
 import { changeDefaultIcons } from '../../utils/changeDefaultIcons';
@@ -41,7 +42,7 @@ const CurrentWeather = () => {
   return  (
     data && (
       <div className={styles.currentWeather}>
-        <h2 className={styles.place}>{place}</h2>
+        <h2 className={styles.place}>{}</h2>
         <p className={styles.date}>
           {day}&nbsp;{tramsformMonthToString()}&nbsp;{year}&nbsp;{transformWeekDayToString()}
         </p>
