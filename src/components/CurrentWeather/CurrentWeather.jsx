@@ -9,19 +9,24 @@ import transformWeekDayToString from '../../utils/transformWeekDayToString';
 import transformMinutes from '../../utils/transformMinutes';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentData } from '../../redux/data/slice';
+import { setPlace } from '../../redux/place/slice';
 
 const CurrentWeather = () => {
   //разобраться с типизацией
   const data = useSelector(state => state.data.data);
-  console.log(data)
+  const place = useSelector(state => state.place.place);
 
   const dispatch = useDispatch();
 
   React.useEffect(() => {
+    // dispatch(getCurrentData({lat: '55.7435', lon: '37.6216'}));
     dispatch(getCurrentData());
+    dispatch(setPlace('Москва'));
   }, []);
+
+  console.log(data)
   
-  const { loading, place } = React.useContext(AppContext);
+  // const { loading, place } = React.useContext(AppContext);
 
   const secondsInHour = 3600;
   const timezone = data && data.timezone;

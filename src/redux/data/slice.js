@@ -12,13 +12,12 @@ export const getCurrentData = createAsyncThunk(
   async () => {
     // const { lat, lon } = params;
     const res = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=55.745&lon=37.6183&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru`
-      // "https://63a8083e7989ad3286f8f72f.mockapi.io/cards"
-    ); //${lat} ${lon}
+      // `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru`
+      `https://api.openweathermap.org/data/2.5/weather?lat=55.7435&lon=37.6216&appid=7aa038d5396a5019e711ebe072511387&units=metric&lang=ru`
+    );
 
     const data = await res.json();
     return data;
-    // dispatch(setData(res.data));
   }
 )
 

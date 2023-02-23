@@ -5,13 +5,13 @@ import { useDispatch } from 'react-redux';
 import { getCurrentData } from './redux/data/slice';
 
 function App() {
-  const [data, setData] = React.useState(null);
+  // const [data, setData] = React.useState(null);
   const [dailyForecast, setDailyForecast] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   const [latitude, setLatitude] = React.useState(''); //55.745
   const [longitude, setLongitude] = React.useState(''); //37.6183
 
-  const [place, setPlace] = React.useState('');
+  // const [place, setPlace] = React.useState('');
   const dispatch = useDispatch();
 
   function getLocation() {
@@ -43,7 +43,7 @@ function App() {
   }
 
   React.useEffect(() => {
-    dispatch(getCurrentData());
+    // dispatch(getCurrentData());
 
     // getLocation()
     //   .then((position) => {
@@ -51,6 +51,8 @@ function App() {
     //     setLongitude(position.coords.longitude);
     //     return position.coords;
     //   })
+
+    //   .then((res) => dispatch(getCurrentData()))
 
     //   .then((res) => Promise.all([fetchCurrentData(res.latitude, res.longitude), fetchDailyForecast(res.latitude, res.longitude)]))
 
@@ -72,16 +74,16 @@ function App() {
   return (
     <AppContext.Provider
       value={{
-        data,
+        // data,
         loading,
         dailyForecast,
-        place,
+        // place,
         fetchGeo,
-        setPlace,
-        setLatitude,
-        setLongitude,
+        // setPlace,
+        // setLatitude,
+        // setLongitude,
         // fetchCurrentData,
-        setData,
+        // setData,
         fetchDailyForecast,
         setDailyForecast
       }}
